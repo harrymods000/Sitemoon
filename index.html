@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moon Community - Mods e Arquivos do Grupo</title>
+  <!-- Importação de fontes do Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Ativa a rolagem suave para todo o site */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Reset e estilos básicos */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #121212; /* Fundo escuro */
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Cabeçalho e Menu */
+    header {
+      background-color: #8B0000; /* Vermelho escuro */
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      border-bottom: 2px solid #660000;
+      border-radius: 0 0 10px 10px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    /* Gradiente linear aplicado aos links do menu */
+    nav ul li a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      background: linear-gradient(45deg, #ff8080, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: background 0.3s ease;
+    }
+    nav ul li a:hover {
+      background: linear-gradient(45deg, #ff9999, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    /* Seção Hero com animação de flip na entrada */
+    .hero {
+      background-color: #a40000; /* Vermelho mais escuro */
+      color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      animation: flipIn 1s ease-out;
+    }
+    /* Gradiente linear aplicado ao título da seção hero */
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, #ff8080, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      background-color: #8B0000;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      display: inline-block;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #660000;
+    }
+    /* Seções Gerais */
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    section h2, section h3 {
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff8080;
+    }
+    section h2 {
+      font-size: 36px;
+    }
+    section h3 {
+      font-size: 28px;
+    }
+    section p {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    /* Lista de Arquivos/Mods */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .feature {
+      background-color: #1e1e1e;
+      border-radius: 15px;
+      padding: 20px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+    .feature h4 {
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 10px;
+      color: #ff8080;
+      font-size: 20px;
+    }
+    .feature p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    /* Seção Contato */
+    #contato p a {
+      color: #ff8080;
+      text-decoration: underline;
+    }
+    /* Rodapé */
+    footer {
+      background-color: #8B0000;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-top: 2px solid #660000;
+      border-radius: 10px 10px 0 0;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #ff8080;
+      text-decoration: underline;
+    }
+    /* Animação de entrada em flip */
+    @keyframes flipIn {
+      0% {
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+      }
+      100% {
+        transform: perspective(400px) rotateY(0deg);
+        opacity: 1;
+      }
+    }
+    /* Toast Styles */
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      z-index: 1000;
+    }
+    #toast.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    #toast a {
+      color: #ff8080;
+      text-decoration: underline;
+    }
+    /* Confetti Styles */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: 0;
+      opacity: 1;
+      animation: confettiFall 3s linear forwards;
+      z-index: 9999;
+    }
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    /* Responsividade */
+    @media(max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+      }
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho com menu -->
+  <header>
+    <h1>MOON COMMUNITY</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#arquivos">Arquivos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Seção Hero -->
+  <section class="hero" id="home">
+    <h1>Bem-vindo ao Armazém Da Moon</h1>
+    <p>Um repositório para mods e arquivos exclusivos do nosso grupo de WhatsApp</p>
+    <a class="btn" href="#arquivos">Acessar Arquivos</a>
+  </section>
+  
+  <!-- Seção de Arquivos Disponíveis com subseções -->
+  <section id="arquivos">
+    <h2>Arquivos Disponíveis</h2>
+    <p>Encontre os apps que você precisa para aprimorar sua experiência como membro da Moon.</p>
+    
+    <!-- Sub-seção para Apps Casuais -->
+    <section id="apps-casuais">
+      <h3>Apps Casuais e Proteção</h3>
+      <p>Navegue entre nossos aplicativos casuais e segurança, desenvolvidos para oferecer uma experiência leve e prática.</p>
+      <div class="features">
+        <!-- 20 cards para Apps Casuais -->
+<div class="feature">
+  <h4>Calculadora Motorola</h4>
+  <p>Uma calculadora personalizada com design temático da Motorola, oferecendo uma interface moderna e funcional.</p>
+  <a class="btn" href="https://www.mediafire.com/file/eghyvxv5wij4nkv/Calculadora+Motorola+By+HarryModz.apk/file" target="_blank">Download</a>
+</div>
+
+<div class="feature">
+  <h4>Spotify Lite</h4>
+  <p>Versão leve do Spotify, ideal para economizar espaço e dados móveis, mantendo a experiência de streaming de músicas.</p>
+  <a class="btn" href="https://www.mediafire.com/file/4ddb6uuw9x7reec/Spotify+Lite+Premium+By+HarryModz.apk/file" target="_blank">Download</a>
+</div>
+        <div class="feature">
+          <h4>Câmera Otimizada</h4>
+          <p>Melhora a qualidade das fotos e vídeos com ajustes avançados, estabilização e filtros em tempo real, garantindo imagens nítidas e profissionais.</p>
+          <a class="btn" href="https://www.mediafire.com/file/wfs3jg1js7h6ksf/Câmera+Otimizada+By+HarryModz.apk/file" target="_blank">Download</a>
+        </div>
+        <div class="feature">
+          <h4>Vpn</h4>
+          <p>Oferece conexão rápida e segura, protegendo sua privacidade com criptografia eficiente e sem comprometer o desempenho do dispositivo.</p>
+          <a class="btn" href="https://www.mediafire.com/file/yqnjz1vp0duzeir/Psiphon+VPN+Pro+By+HarryModz.apk/file" target="_blank">Download</a>
+        </div>
+        <div class="feature">
+          <h4>Zarchiver</h4>
+          <p>ZArchiver é uma versão modificada do popular gerenciador de arquivos compactados, trazendo melhorias e recursos extras para facilitar ainda mais seu uso.</p>
+          <a class="btn" href="https://www.mediafire.com/file/tb8iejs9gj7eebq/Magic+files_1.0.8_.apk/file" target="_blank">Download</a>
+        </div>
+        <div class="feature">
+          <h4>Controlador De Brilho</h4>
+          <p>Aplicativo que disponibiliza funções para alterar o brilho além do limite do seu dispositivo.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.hardyinfinity.screendimmer" target="_blank">Download</a>
+        </div>
+        <div class="feature">
+          <h4>Controlador De Volume</h4>
+          <p>Este Aplicativo dá acesso ao usuário a partição de volume. Pode-se alterar o volume para ficar extremamente alto.</p>
+          <a class="btn" href="https://www.mediafire.com/file/1dts4x98agf311d/Controlador_de_Volume_By_HarryModz.apk/file" target="_blank">Download</a>
+        </div>
+        <div class="feature">
+          <h4>System UI Tunner</h4>
+          <p>Acesse uma configuração oculta do seu Android. Nesta configuração, fica disponível funções para alterar a barra de status de seu dispositivo.</p>
+          <a class="btn" href="https://www.mediafire.com/file/9wzzmq3rtphq3wg/System+UI+Tuner+By+HarryModz.apk/file" target="_blank">Download</a>
+        </div>
+        <div class="feature">
+          <h4>Google Externo</h4>
+          <p>É um aplicativo modificado que oferece recursos adicionais para otimizar sua experiência com os serviços do Google. Com esta versão, você pode desfrutar de mais funcionalidades sem as limitações das versões padrão.</p>
+          <a class="btn" href="https://www.mediafire.com/file/66czqc2wq1lbxba/Google+Externo+Lite+By+HarryModz.apk/file" target="_blank">Download</a>
+        </div>
+        <div class="feature">
+          <h4>TouchLock</h4>
+          <p>TouchLock é um aplicativo útil para bloquear a tela sensível ao toque do seu dispositivo, evitando toques acidentais enquanto assiste vídeos, joga ou usa qualquer aplicativo. Com uma interface simples e intuitiva, você pode bloquear e desbloquear a tela com facilidade, garantindo que nenhum toque indesejado interfira na sua experiência.</p>
+          <a class="btn" href="https://www.mediafire.com/file/7je7j51npj2aa4o/Touch+Lock+By+HarryModz_enc.apk/file" target="_blank">Download</a>
+        </div>
+        <div class="feature">
+          <h4>YouTube Lite</h4>
+          <p>YouTube Lite Premium é a versão leve e otimizada do YouTube, oferecendo todos os recursos premium sem as limitações das versões padrão. Ideal para dispositivos com pouco armazenamento ou conexões mais lentas, permite uma experiência de visualização rápida e sem anúncios.</p>
+          <a class="btn" href="https://www.mediafire.com/file/nog7qupjnxt7hld/HarryTube+Lite+By+HarryModz_enc.apk/file" target="_blank">Download</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Separador visual -->
+    <hr style="margin: 60px 0; border: 1px solid #660000;">
+    
+    <!-- Sub-seção para Apps de Anime e Proteção -->
+<section id="apps-anime-protecao">
+  <h3>Apps de entretenimento</h3>
+  <p>Explore nossa seleção exclusiva de apps que unem a estética dos animes a recursos de cinema.</p>
+  <div class="features">
+    <!-- 10 cards para Apps de Anime e Proteção (reduzido pela metade) -->
+    <div class="feature">
+      <h4>Tomato</h4>
+      <p>Este mod oferece uma versão premium do aplicativo Tomato, eliminando todos os anúncios para proporcionar uma experiência de uso contínua e sem interrupções.</p>
+      <a class="btn" href="https://www.mediafire.com/file/jgzgxnswh8405r1/(TOMATO)+ABRA+ESSE+ZIP+E+LEIA.zip/file" target="_blank">Download</a>
+    </div>
+    <div class="feature">
+      <h4>Better Anime</h4>
+      <p>Este mod remove todos os anúncios do aplicativo Better Anime, garantindo uma navegação fluida e uma experiência de usuário mais agradável e focada no conteúdo.</p>
+      <a class="btn" href="https://www.mediafire.com/file/gr6a8zceqd5zy8p/Better+Anime+Sem+Anúncios+(By+HarryModz)_enc.apk/file" target="_blank">Download</a>
+    </div>
+    <div class="feature">
+      <h4>CineTela</h4>
+      <p>Um aplicativo premium que reúne séries, animes e filmes de diversas plataformas em um único lugar, oferecendo uma experiência completa e totalmente livre de anúncios.</p>
+      <a class="btn" href="https://www.mediafire.com/file/k0nvsk7bkbsjk0m/CineTela_6.0_Mod+By+HarryModz.apk/file" target="_blank">Download</a>
+    </div>
+    <div class="feature">
+  <h4>Jogos do Brasileirão ao Vivo</h4>
+  <p>Assista aos jogos do Brasileirão de graça, sem interrupções e sem anúncios.</p>
+  <a class="btn" href="https://www.mediafire.com/file/qj7e1rzmaa6nya2/VER+JOGOS+DO+BRASILEIRÃO+(ABRA+O+ZIP).zip/file" target="_blank">Baixar Agora</a>
+</div>
+  </div>
+</section>
+
+<!-- Separador visual -->
+<hr style="margin: 60px 0; border: 1px solid #660000;">
+
+<!-- Sub-seção para Apps de Modders -->
+<section id="apps-modders">
+  <h3>Apps de Modders</h3>
+  <p>Ferramentas essenciais para modders que desejam personalizar e aprimorar aplicativos.</p>
+  <div class="features">
+    <!-- 5 cards para Apps de Modders -->
+<div class="feature">
+  <h4>MT Manager</h4>
+  <p>Gerenciador de arquivos avançado e editor de APK, ideal para modders e desenvolvedores.</p>
+  <a class="btn" href="https://www.mediafire.com/file/5s86mqqvchucasc/MT+Manager+Premuim+By+HarryModz_enc.apk/file" target="_blank">Download</a>
+</div>
+
+<div class="feature">
+  <h4>Apk Editor</h4>
+  <p>Ferramenta para editar e modificar APKs, permitindo personalizações e ajustes no código.</p>
+  <a class="btn" href="https://www.mediafire.com/file/4jvlf43neg6i46z/APK+Editor+Premium+By+HarryModz_enc.apk/file" target="_blank">Download</a>
+</div>
+
+<div class="feature">
+  <h4>ApkMTool X</h4>
+  <p>Utilitário completo para decompilar, modificar e recompilar aplicativos Android de forma simplificada.</p>
+  <a class="btn" href="https://www.mediafire.com/file/dyydw1l9g4o3bl1/Apktool+M+Mod+By+HarryModz.apk/file" target="_blank">Download</a>
+</div>
+
+<div class="feature">
+  <h4>NP Manager</h4>
+  <p>Aplicativo versátil para gerenciar, modificar e otimizar arquivos APK com facilidade.</p>
+  <a class="btn" href="https://www.mediafire.com/file/72ckyyurunqjyj0/NP+Manager+Premium+By+HarryModz+(use+offline).apk/file" target="_blank">Download</a>
+</div>
+  </div>
+</section>
+
+<!-- Separador visual -->
+<hr style="margin: 60px 0; border: 1px solid #660000;">
+
+<!-- Sub-seção para Apps de Acesso Root -->
+<section id="apps-root">
+  <h3>Apps de Acesso Root</h3>
+  <p>Aplicativos que exigem acesso root para funcionalidades avançadas e personalização profunda do sistema.</p>
+  <div class="features">
+    <!-- 5 cards para Apps de Acesso Root -->
+<div class="feature">
+  <h4>Play Integrity API Checker</h4>
+  <p>Verifique o status da API Play Integrity e descubra se seu dispositivo passa nas verificações de integridade do Google.</p>
+  <a class="btn" href="https://www.mediafire.com/file/p7fw1si8fq3xj84/Play+Intergrity+By+HarryModz.apk/file" target="_blank">Download</a>
+</div>
+
+<div class="feature">
+  <h4>APatch</h4>
+  <p>Método alternativo para obter acesso root em dispositivos Android, permitindo modificações avançadas no sistema.</p>
+  <a class="btn" href="https://www.mediafire.com/file/vnff4p298sdnmyt/APatch+By+HarryModz+(método+de+root).apk/file" target="_blank">Download</a>
+</div>
+
+<div class="feature">
+  <h4>Game Guardian</h4>
+  <p>Ferramenta poderosa para modificar valores de jogos Android, exigindo root para acesso total.</p>
+  <a class="btn" href="https://www.mediafire.com/file/aajorouia2hbo2c/Game+Guardian+By+HarryModz.apk/file" target="_blank">Download</a>
+</div>
+
+<div class="feature">
+  <h4>Key Attestation</h4>
+  <p>Verifique o status da Key Attestation do seu dispositivo para detectar possíveis alterações no bootloader e segurança.</p>
+  <a class="btn" href="https://www.mediafire.com/file/witzlk6j8xq8huq/Key+Attestation+By+HarryModz.apk/file" target="_blank">Download</a>
+</div>
+
+<div class="feature">
+  <h4>Disk Health Checker</h4>
+  <p>Analise a integridade do armazenamento do seu dispositivo e detecte setores defeituosos ou problemas no disco.</p>
+  <a class="btn" href="https://www.mediafire.com/file/yl4li9f7qjjhu47/Disk+Health+Checker+By+HarryModz.apk/file" target="_blank">Download</a>
+</div>
+
+  </div>
+</section>
+
+<!-- Separador visual -->
+<hr style="margin: 60px 0; border: 1px solid #660000;">
+
+<!-- Sub-seção para Apps de Edição -->
+<section id="apps-edicao">
+  <h3>Apps de Edição</h3>
+  <p>Ferramentas poderosas para edição de imagens, vídeos e áudios, ideais para criadores de conteúdo.</p>
+  <div class="features">
+    <!-- 5 cards para Apps de Edição -->
+    <div class="feature">
+      <h4>NodeVideo</h4>
+      <p>O NodeVideo é um poderoso editor de vídeo profissional para dispositivos móveis. Com uma interface intuitiva e recursos avançados, ele permite criar edições de alta qualidade, incluindo efeitos visuais, camadas ajustáveis, keyframes e muito mais. Ideal para criadores que buscam flexibilidade e desempenho na edição de vídeos.</p>
+      <a class="btn" href="https://www.mediafire.com/file/hvsf2s6fuk1i2fi/NodeVideo+Premium+By+HarryModz_enc.apk/file" target="_blank">Download</a>
+    </div>
+    <div class="feature">
+      <h4>Alight Motion</h4>
+      <p>Este Mod do Alight Motion traz todas as ferramentas avançadas de edição e animação, permitindo criar vídeos incríveis com camadas, efeitos visuais e muito mais. Além disso, ele inclui um otimizador especial, garantindo melhor desempenho e uma experiência mais fluida durante o uso.</p>
+      <a class="btn" href="https://www.mediafire.com/file/b7cjgc2uz292sjt/Alight_Azul_-_%25F0%259F%2592%2599_%2528Mod%2529_%252B_Otimizador_Verde_-_%25F0%259F%2592%259A_%2528New%2529_-_Extrair.zip/file" target="_blank">Download</a>
+    </div>
+    <div class="feature">
+      <h4>PsTouch</h4>
+      <p>Este mod do PsTouch oferece uma experiência completa de edição de fotos, trazendo ferramentas avançadas para ajustes, camadas e efeitos profissionais. Ideal para quem deseja criar edições incríveis com facilidade e praticidade.</p>
+      <a class="btn" href="https://www.mediafire.com/file/upqkaou8l682nvd/PsTouch+Mod+By+HarryModz_enc.apk/file" target="_blank">Download</a>
+    </div>
+<div class="feature">
+  <h4>Picsart</h4>
+  <p>O Picsart é um dos editores de fotos mais populares, oferecendo ferramentas avançadas de edição, filtros, efeitos e muito mais para criar imagens incríveis.</p>
+  <a class="btn" href="https://www.mediafire.com/file/87c5vx8j40pbgmz/Picsart+Premium+By+HarryModz_enc.apk/file" target="_blank">Download</a>
+</div>
+   <div class="feature">
+  <h4>IbisPaint X</h4>
+  <p>O IbisPaint X é um poderoso aplicativo de desenho e pintura digital, oferecendo pincéis personalizáveis, camadas e ferramentas avançadas para artistas de todos os níveis.</p>
+  <a class="btn" href="https://www.mediafire.com/file/li44vngzeaq0otl/ibis+Paint+X+Premium+By+HarryModz_enc.apk/file" target="_blank">Download</a>
+</div>
+
+  </div>
+</section>
+  
+  <!-- Seção Sobre -->
+  <section id="sobre">
+    <h2>Sobre o Moon Community</h2>
+    <p>O Moon Community é um espaço criado para compartilhar e armazenar mods e arquivos do nosso grupo de WhatsApp. Aqui você encontrará diversas modificações para aplicativos, atualizações e muito mais.</p>
+  </section>
+  
+  <!-- Seção Contato -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Para sugestões, dúvidas ou mais informações, entre em contato conosco.</p>
+    <p>Email: <a href="mailto:harryzx.mp7@gmail.com">Contate o Criador Via Email</a></p>
+  </section>
+  
+<!-- Botão secreto como link -->
+<a href="app.html">
+  <button id="secret-btn" style=" 
+    background-color: #2f2f2f; 
+    border: 2px solid #ff3b3b; 
+    color: #ff3b3b; 
+    font-size: 16px; 
+    font-weight: bold; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: all 0.3s ease;">
+    Não clique
+  </button>
+</a>
+
+
+
+  
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 HarryModz. Todos os direitos reservados.</p>
+    <p><a href="https://wa.me/556791384290?text=Olá+harry,+tenho+uma+pergunta.+">Fale Comigo Via WhatsApp</a></p>
+  </footer>
+  
+  <!-- Toast de feedback -->
+  <div id="toast">
+    Você está gostando dos mods e o site feito por <strong>HarryModz</strong>? Envie suas sugestões para updates!
+    <a href="mailto:harryzx.mp7@gmail.com">Enviar</a>
+  </div>
+  
+  <!-- Script para exibir o toast e o efeito de confetti -->
+  <script>
+    // Função que exibe o toast
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 5000); // Toast visível por 5 segundos
+    }
+    
+    // Função que exibe confetti
+    function showConfetti() {
+      const colors = ['#ff8080', '#ff9999', '#ffffff', '#ffcccb'];
+      const numConfetti = 20;
+      for (let i = 0; i < numConfetti; i++) {
+        let confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        // Define posição horizontal aleatória
+        confetti.style.left = Math.random() * 100 + 'vw';
+        // Define um pequeno delay aleatório para a animação
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        document.body.appendChild(confetti);
+        // Remove o confetti após o término da animação
+        setTimeout(() => {
+          confetti.remove();
+        }, 3000);
+      }
+    }
+    
+    // Adiciona evento de clique a todos os botões de download
+    const downloadButtons = document.querySelectorAll('.features .feature .btn');
+    downloadButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const url = btn.getAttribute('href');
+        if(url && url !== "#") {
+          window.open(url, '_blank');
+        }
+        showToast();
+        showConfetti();
+      });
+    });
+  </script>
+</body>
+</html>

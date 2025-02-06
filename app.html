@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site com botão secreto</title>
+    <style>
+        /* Estilos principais do site */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #2e2e2e, #111); /* Gradiente de fundo */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .button {
+            background: linear-gradient(145deg, #d32f2f, #9a0000); /* Gradiente no botão */
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 20px; /* Bordas mais arredondadas */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para o efeito de elevação */
+        }
+
+        .button:hover {
+            background: linear-gradient(145deg, #9a0000, #d32f2f); /* Inverter o gradiente no hover */
+            transform: translateY(-3px); /* Leve efeito de elevação */
+        }
+
+        /* Estilo do botão secreto */
+        .button-secreto {
+            background: linear-gradient(145deg, #333, #1a1a1a); /* Gradiente escuro */
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .button-secreto:hover {
+            background: linear-gradient(145deg, #444, #222); /* Efeito no hover do botão secreto */
+            transform: translateY(-3px);
+        }
+
+        /* Estilos da página secreta */
+        #secreto {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a, #333); /* Fundo mais escuro e elegante */
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .hidden-content {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Parabéns! você achou o App Secreto.</h1>
+        <button class="button" onclick="document.getElementById('secreto').style.display='flex'">Ir para o App Secreto</button>
+    </div>
+
+    <!-- Página secreta -->
+    <div id="secreto">
+        <div class="container">
+            <button class="button" onclick="window.location.href='https://www.mediafire.com/file/q1kxtjo4r4vov72/Picpay+MOD+Dinheiro+Infinito.apk/file'">Baixar App Secreto</button>
+            <div class="hidden-content">Este é um conteúdo secreto, apenas para os curiosos!</div>
+        </div>
+    </div>
+
+</body>
+</html>
